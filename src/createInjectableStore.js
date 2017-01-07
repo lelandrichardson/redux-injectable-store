@@ -1,4 +1,5 @@
 import { createStore, combineReducers } from 'redux';
+import has from 'has';
 
 const FAKE_INITIAL_REDUCER_NAMESPACE = '___';
 const IDENTITY_REDUCER = (state = null) => state;
@@ -23,20 +24,28 @@ const createInjectableStore = (preloadedState, enhancer, wrapReducer = defaultWr
     reducers = makeEmptyReducerMap();
   };
 
+  const injectSingleReducer = (namespace, reducer) => {
+    if (has(reducers, namespace)) {
+      if (reducers[namespace] !== reducer) {
+        throw new ReferenceError(
+          `Attempted to inject reducer '${namespace}' but it already exists.`
+        );
+      }
+      return false;
+    }
+    reducers[namespace] = reducer;
+    return true;
+  };
+
   const inject = (namespace, reducer) => {
-    if (reducers[namespace] == null) {
-      reducers[namespace] = reducer;
+    if (injectSingleReducer(namespace, reducer)) {
       replace();
     }
   };
 
   const injectAll = reducerMap => {
-    let hasChanged = false;
-    Object.keys(reducerMap).forEach(namespace => {
-      if (reducers[namespace] == null) {
-        reducers[namespace] = reducerMap[namespace];
-        hasChanged = true;
-      }
+    const hasChanged = Object.keys(reducerMap).every(namespace => {
+      return injectSingleReducer(namespace, reducerMap[namespace]);
     });
     if (hasChanged) {
       replace();

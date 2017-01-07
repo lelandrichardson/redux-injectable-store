@@ -40,5 +40,8 @@
     "eslint-plugin-prefer-object-spread": "^1.0.0",
     "eslint-plugin-react": "^6.8.0",
     "redux": "^3.6.0"
+  },
+  "dependencies": {
+    "has": "^1.0.1"
   }
 }
