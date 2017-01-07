@@ -54,14 +54,14 @@ type InjectableStore<S, A> = ReduxStore<S, A> & {
 };
 
 function createInjectableStore<S, A>(
-  preloadedState: S, 
+  preloadedState: S,
   enhancer: StoreEnhancer<S, A>,
   wrapReducer: (Reducer<S, A>): Reducer<S, A> = Identity
 ): InjectableStore;
 ```
 
 The `createInjectableStore` API follows the same API as Redux's `createStore`, but with the first
-argument (`reducer`) missing, and an optional additional last argument, `wrapReducer`. The 
+argument (`reducer`) missing, and an optional additional last argument, `wrapReducer`. The
 `wrapReducer` argument is a function that takes a reducer and returns a reducer. It is meant to allow
 you to provide some global action handling if you need to.
 
@@ -113,11 +113,6 @@ store.injectAll({
   qoo: QooReducer,
 });
 ```
-
-## Additional Notes
-
-1. If you try to inject a reducer into a namespace that already has a reducer, it will be a "no op".
-
 
 ## License
 
