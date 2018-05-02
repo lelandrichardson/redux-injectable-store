@@ -48,8 +48,8 @@ type ReduxStore<S, A> = {
 
 // This is a new "injectable" store with some extra methods
 type InjectableStore<S, A> = ReduxStore<S, A> & {
-  inject(namespace: string, reducer: Reducer<S, A>),
-  injectAll({ [key: string]: Reducer<S, A> }),
+  inject(namespace: string, reducer: Reducer<S, A>, force: boolean = false),
+  injectAll({ [key: string]: Reducer<S, A> }, force: boolean = false),
   clearReducers(),
 };
 
@@ -116,7 +116,7 @@ store.injectAll({
 
 ## Additional Notes
 
-1. If you try to inject a reducer into a namespace that already has a reducer, it will be a "no op".
+1. If you try to inject a reducer into a namespace that already has a reducer without passing the 'force' argument, it will `console.warn` and be a "no op".
 
 
 ## License
