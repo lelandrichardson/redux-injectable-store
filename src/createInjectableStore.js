@@ -1,5 +1,5 @@
 import { createStore, combineReducers } from 'redux';
-import warning from 'warning';
+import warning from './utils/warning';
 
 const FAKE_INITIAL_REDUCER_NAMESPACE = '___';
 const IDENTITY_REDUCER = (state = null) => state;
