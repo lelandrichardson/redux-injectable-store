@@ -1,6 +1,6 @@
 {
   "name": "redux-injectable-store",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Redux store with injectable reducers for use with bundle splitting, large apps, and SPAs.",
   "main": "lib/index.js",
   "scripts": {

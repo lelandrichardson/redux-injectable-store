@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.1.1
+
+- Move `warning` to it's own module in `utils`, so that it's mockable in test
+
 ## v1.1.0
 
 - Add warning when an attempt is made to inject a reducer into an existing namespace.
