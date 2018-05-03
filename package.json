@@ -5,7 +5,9 @@
   "main": "lib/index.js",
   "scripts": {
     "prepublish": "npm run build",
-    "test": "npm run lint",
+    "jest": "NODE_ENV=test jest --config test/jest-config.json --runInBand",
+    "test": "npm run --silent jest -- --runInBand=false",
+    "test:watch": "npm run --silent test -- --watch",
     "lint": "eslint ./",
     "build": "babel src --out-dir lib"
   },
@@ -32,13 +34,16 @@
     "babel-cli": "^6.18.0",
     "babel-core": "^6.20.0",
     "babel-eslint": "^6.1.0",
+    "babel-jest": "^20.0.3",
     "babel-preset-react-native": "^1.9.0",
+    "chai": "^4.0.2",
     "eslint": "^3.11.1",
     "eslint-config-airbnb": "^12.0.0",
     "eslint-plugin-import": "^1.16.0",
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-prefer-object-spread": "^1.0.0",
     "eslint-plugin-react": "^6.8.0",
+    "jest": "^20.0.4",
     "redux": "^3.6.0"
   },
   "dependencies": {

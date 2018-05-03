@@ -1,0 +1,11 @@
+{
+  "bail": false,
+  "coverageReporters": ["json-summary", "lcov", "html"],
+  "testEnvironment": "node",
+  "testRegex": "test/.*\\.test\\.js$",
+  "rootDir": "..",
+  "roots": [
+    "./src",
+    "./test"
+  ]
+}
